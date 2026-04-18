@@ -36,6 +36,7 @@
                 <a href="<?= BASE_URL ?>?action=admin/categories">📂 Quản lý Danh mục</a>
                 <hr class="text-white">
                 <a href="<?= BASE_URL ?>" class="text-warning">⬅️ Quay lại Website</a>
+                <a href="<?= BASE_URL ?>admin/logout" class="text-danger mt-3">🚪 Đăng xuất (<?= $_SESSION['username'] ?? 'Admin' ?>)</a>
             </div>
 
             <!-- Main Content -->

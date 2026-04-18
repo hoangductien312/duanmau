@@ -18,6 +18,7 @@ unset($_SESSION['success'], $_SESSION['error']);
 <?php endif; ?>
 <div class="col-12">
     <div>
+        <a href="<?= BASE_URL ?>?action=admin/product/create" class="btn btn-primary">Thêm sản phẩm</a>
     </div>
     <!-- Danh sách sản phẩm -->
      <div class="table-responsive">
@@ -32,6 +33,7 @@ unset($_SESSION['success'], $_SESSION['error']);
                     <th>Image</th>
                     <th>Description</th>
                     <th>Category</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,6 +56,18 @@ unset($_SESSION['success'], $_SESSION['error']);
                     <td><?= $product['description'] ?></td>
                     <!-- BT: Hãy hiển thị tên danh mục -->
                     <td><?= $product['id_category'] ?></td>
+                    <td>
+                        <a href="<?= BASE_URL ?>?action=admin/product/edit&id=<?= $product['id'] ?>" 
+                        class="btn btn-warning">Sửa</a>
+                        <form method="POST"
+                        action="<?= BASE_URL ?>?action=admin/product/delete" class="d-inline">
+                            <input type="hidden" name="id" value="<?= $product['id'] ?>">
+                             <button type="submit" 
+                             class="btn btn-danger" 
+                             onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm <?= $product['name'] ?>?')">Xóa</button>
+                        </form>
+                       
+                    </td>
                 </tr>
                 <?php endforeach; ?>
                 <?php endif; ?>

@@ -16,17 +16,31 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-xxl bg-light justify-content-center">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link text-uppercase" href="<?= BASE_URL ?>"><b>Home</b></a>
-            </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="<?= BASE_URL ?>">TECH STORE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="<?= BASE_URL ?>">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= BASE_URL ?>?action=products">Tất cả sản phẩm</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light px-3 rounded-pill" href="<?= BASE_URL ?>admin/">Đăng nhập Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <div class="container">
-        <h1 class="mt-3 mb-3"><?= $title ?? 'Home' ?></h1>
-
+    <div class="container mt-4">
         <div class="row">
             <?php
             if (isset($view)) {
