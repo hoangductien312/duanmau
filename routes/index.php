@@ -1,6 +1,18 @@
 <?php
 
 $action = $_GET['action'] ?? '/';
+$action = trim($action, '/');
+if (empty($action)) {
+    $action = '/';
+}
+
+// Authentication Middleware cho các route bắt đầu bằng 'admin'
+if (strpos($action, 'admin') === 0 && $action !== 'admin/login' && $action !== 'admin/logout') {
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: " . BASE_URL . "admin/login");
+        exit;
+    }
+}
 
 match ($action) {
     '/'         => (new HomeController)->index(),
@@ -18,6 +30,10 @@ match ($action) {
     'product/edit' => (new ProductController)->edit(),
     // Xử lý sửa
     'product/update' => (new ProductController)->update(),
+
+    // Admin Auth
+    'admin/login' => ($_SERVER['REQUEST_METHOD'] === 'POST') ? (new AuthController)->login() : (new AuthController)->loginForm(),
+    'admin/logout' => (new AuthController)->logout(),
 
     // Admin Routes
     'admin' => (new DashboardController)->index(),
