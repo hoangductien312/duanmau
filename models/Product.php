@@ -51,5 +51,13 @@ class Product extends BaseModel{
             'id_category' => $data['id_category']
         ]);
     }
+    // Lấy N sản phẩm mới nhất
+    public function getLatest($limit = 8){
+        $sql = "SELECT * FROM {$this->table} ORDER BY id DESC LIMIT :limit";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':limit', (int)$limit, \PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
 ?>
