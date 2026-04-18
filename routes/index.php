@@ -21,6 +21,14 @@ match ($action) {
 
     // Admin Routes
     'admin/dashboard' => (new DashboardController)->index(),
+    
+    // Admin Quản lý Sản phẩm
+    'admin/products' => (new AdminProductController)->index(),
+    'admin/product/create' => (new AdminProductController)->create(),
+    'admin/product/store' => (new AdminProductController)->store(),
+    'admin/product/edit' => (new AdminProductController)->edit(),
+    'admin/product/update' => (new AdminProductController)->update(),
+    'admin/product/delete' => (new AdminProductController)->delete(),
 
     default     => (new ProductController)->index(),
 };
