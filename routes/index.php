@@ -20,6 +20,7 @@ match ($action) {
     'product/update' => (new ProductController)->update(),
 
     // Admin Routes
+    'admin' => (new DashboardController)->index(),
     'admin/dashboard' => (new DashboardController)->index(),
     
     // Admin Quản lý Sản phẩm
@@ -29,6 +30,14 @@ match ($action) {
     'admin/product/edit' => (new AdminProductController)->edit(),
     'admin/product/update' => (new AdminProductController)->update(),
     'admin/product/delete' => (new AdminProductController)->delete(),
+
+    // Admin Quản lý Danh mục
+    'admin/categories' => (new CategoryController)->index(),
+    'admin/category/create' => (new CategoryController)->create(),
+    'admin/category/store' => (new CategoryController)->store(),
+    'admin/category/edit' => (new CategoryController)->edit(),
+    'admin/category/update' => (new CategoryController)->update(),
+    'admin/category/delete' => (new CategoryController)->delete(),
 
     default     => (new ProductController)->index(),
 };
