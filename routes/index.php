@@ -19,5 +19,8 @@ match ($action) {
     // Xử lý sửa
     'product/update' => (new ProductController)->update(),
 
+    // Admin Routes
+    'admin/dashboard' => (new DashboardController)->index(),
+
     default     => (new ProductController)->index(),
 };
