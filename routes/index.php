@@ -38,7 +38,7 @@ match ($action) {
     // Admin Routes
     'admin' => (new DashboardController)->index(),
     'admin/dashboard' => (new DashboardController)->index(),
-    
+
     // Admin Quản lý Sản phẩm
     'admin/products' => (new AdminProductController)->index(),
     'admin/product/create' => (new AdminProductController)->create(),

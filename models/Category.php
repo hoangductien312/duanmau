@@ -8,6 +8,16 @@ class Category extends BaseModel{
         return $stmt->fetchAll();
     }
 
+    // Lấy tất cả danh mục kèm số lượng sản phẩm
+    public function getAllWithProductCount(){
+        $sql = "SELECT c.id, c.name, COUNT(p.id) AS product_count 
+                FROM categorys c 
+                LEFT JOIN products p ON c.id = p.id_category 
+                GROUP BY c.id";
+        $stmt = $this->pdo->query($sql);
+        return $stmt->fetchAll();
+    }
+
     public function getById($id){
         $sql = "SELECT * FROM {$this->table} WHERE id = :id";
         $stmt = $this->pdo->prepare($sql);

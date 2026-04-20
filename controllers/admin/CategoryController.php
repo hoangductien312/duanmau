@@ -6,7 +6,7 @@
             $this->categoryModel = new Category();
         }
         public function index(){
-            $categories = $this->categoryModel->getAll();
+            $categories = $this->categoryModel->getAllWithProductCount();
             $view = 'admin/categories/index';
             $title = 'Quản lý danh mục';
             require_once PATH_VIEW_ADMIN;

@@ -8,9 +8,16 @@
             $this->categoryModel = new Category();
         }
         public function index(){
-            $products = $this->productModel->getAll();
+            $id_category = $_GET['id_category'] ?? null;
+            if ($id_category) {
+                $products = $this->productModel->getByCategory($id_category);
+                $category = $this->categoryModel->getById($id_category);
+                $title = 'Sản phẩm thuộc danh mục: ' . ($category['name'] ?? 'Không xác định');
+            } else {
+                $products = $this->productModel->getAll();
+                $title = 'Quản lý sản phẩm (Admin)';
+            }
             $view = 'admin/products/index';
-            $title = 'Quản lý sản phẩm (Admin)';
             require_once PATH_VIEW_ADMIN;
         }
         public function delete(){

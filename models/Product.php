@@ -59,5 +59,13 @@ class Product extends BaseModel{
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    // Lấy sản phẩm theo danh mục
+    public function getByCategory($id_category){
+        $sql = "SELECT * FROM {$this->table} WHERE id_category = :id_category";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['id_category' => $id_category]);
+        return $stmt->fetchAll();
+    }
 }
 ?>
